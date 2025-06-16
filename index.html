@@ -1,13 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Portfólio</title>
+  <title>Portfólio - Scott Dev</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Olá, eu sou o Scott!</h1>
-  <p>Este é meu portfólio publicado com GitHub Pages.</p>
+  <header>
+    <h1>Scott Dev</h1>
+    <p>Desenvolvedor Front-End apaixonado por interfaces criativas</p>
+  </header>
+
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>
+      Sou o Scott, um desenvolvedor apaixonado por criar experiências visuais que causem impacto. Não busco apenas escrever código — busco traduzir ideias e emoções em interfaces. 
+      Tenho uma pegada criativa, gosto de experimentar visuais diferentes, brincar com cores, formas e movimentos. Cada projeto que desenvolvo carrega um pouco da minha identidade.
+      Estou sempre em busca de aprender mais e evoluir tanto tecnicamente quanto pessoalmente. Curioso, determinado e sempre com uma ideia nova na cabeça.
+    </p>
+  </section>
+
+  <section id="projetos">
+    <!-- Projeto 1 -->
+    <div class="projeto">
+      <h3>BitLove</h3>
+      <p>Cartão em formato 16 bits para o Dia dos Namorados.</p>
+      <a href="https://github.com/scottDev-debug/BitLove" target="_blank">GitHub</a>
+      <a href="https://bitlove.vercel.app" target="_blank">Site</a>
+
+      <div class="preview-carousel">
+        <img src="bitlove.jpeg" alt="BitLove 1" />
+        <img src="bitlove2.jpeg" alt="BitLove 2" />
+      </div>
+    </div>
+
+    <!-- Projeto 2 -->
+    <div class="projeto">
+      <h3>Calculadora JS</h3>
+      <p>Calculadora com JavaScript puro e estilo retrô.</p>
+      <a href="https://github.com/seuuser/calculadora-js" target="_blank">GitHub</a>
+
+      <div class="preview-carousel">
+        <img src="calc1.png" alt="Calculadora 1" />
+        <img src="calc2.png" alt="Calculadora 2" />
+      </div>
+    </div>
+
+    <!-- Projeto 3 -->
+    <div class="projeto">
+      <h3>To-Do Pixel</h3>
+      <p>Lista de tarefas com estilo 8-bits e interatividade simples.</p>
+      <a href="https://github.com/seuuser/todo-pixel" target="_blank">GitHub</a>
+
+      <div class="preview-carousel">
+        <img src="todo1.png" alt="To-Do 1" />
+        <img src="todo2.png" alt="To-Do 2" />
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const carrosseis = document.querySelectorAll('.preview-carousel');
+
+    carrosseis.forEach(carrossel => {
+      const imagens = carrossel.querySelectorAll('img');
+      let index = 0;
+      let interval;
+
+      const iniciar = () => {
+        imagens.forEach((img, i) => {
+          img.style.opacity = i === index ? '1' : '0';
+        });
+        index = (index + 1) % imagens.length;
+      };
+
+      carrossel.parentElement.addEventListener('mouseenter', () => {
+        iniciar();
+        interval = setInterval(iniciar, 2000);
+      });
+
+      carrossel.parentElement.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        imagens.forEach(img => img.style.opacity = 0);
+      });
+    });
+  </script>
 </body>
 </html>
-
